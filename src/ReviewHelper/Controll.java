@@ -66,10 +66,24 @@ public class Controll {
         term.add(jsonobj);
         write_file(jsonObject.toJSONString());
     }
-    public void set_mode(int i){
-        mode=i;
+    public String show_answer(int a,int b){
+        Object obj=open_file();
+        JSONObject jsonObject = (JSONObject) obj;
+        JSONArray quizzes = (JSONArray) jsonObject.get("Quizzes");
+        JSONObject quiz = (JSONObject) quizzes.get(a);
+        JSONArray terms = (JSONArray) quiz.get("Term");
+        JSONObject term = (JSONObject) terms.get(b);
+        String answer = (String) term.get("Answer");
+        return answer;
     }
-    public int get_mode(){
-        return mode;
+    public String show_definition(int a,int b){
+        Object obj=open_file();
+        JSONObject jsonObject = (JSONObject) obj;
+        JSONArray quizzes = (JSONArray) jsonObject.get("Quizzes");
+        JSONObject quiz = (JSONObject) quizzes.get(a);
+        JSONArray terms = (JSONArray) quiz.get("Term");
+        JSONObject term = (JSONObject) terms.get(b);
+        String definition = (String) term.get("Question");
+        return definition;        
     }
 }

@@ -50,7 +50,9 @@ public class QuestionView extends javax.swing.JFrame {
         });
 
         DefTextField.setColumns(20);
+        DefTextField.setLineWrap(true);
         DefTextField.setRows(5);
+        DefTextField.setWrapStyleWord(true);
         jScrollPane1.setViewportView(DefTextField);
 
         jLabel1.setText("Term");
@@ -64,7 +66,8 @@ public class QuestionView extends javax.swing.JFrame {
             }
         });
 
-        PicButton.setText("jButton2");
+        PicButton.setText("Associate");
+        PicButton.setEnabled(false);
 
         PrevButton.setText("Prev");
 
@@ -133,18 +136,29 @@ public class QuestionView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     Controll c = new Controll();
+    static int mode;
+    public static void set_mode(int i){
+        mode=i;
+    }
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
-    }//GEN-LAST:event_formWindowActivated
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(c.get_mode()==1){
-            
-        }else{
+        if(mode==1){
             EditButton.setEnabled(false);
             PrevButton.setEnabled(false);
             NextButton.setEnabled(false);
         }
+        else{
+            AddButton.setEnabled(false);
+            TermTextBox.setFocusable(false);
+            DefTextField.setFocusable(false);
+            TermTextBox.setText(c.show_answer(QuizSelectionView.quizno,0));
+            DefTextField.setText(c.show_definition(QuizSelectionView.quizno, 0));
+
+        }
+        
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
     }//GEN-LAST:event_formWindowOpened
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed

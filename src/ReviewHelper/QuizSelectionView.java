@@ -16,7 +16,7 @@ public class QuizSelectionView extends javax.swing.JFrame {
      * Creates new form OldQuizView
      */
     Controll c=new Controll();
-    int quizno;
+    public static int quizno;
     public QuizSelectionView() {
         initComponents();
     }
@@ -351,7 +351,6 @@ public class QuizSelectionView extends javax.swing.JFrame {
 
     private void OpenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenButtonActionPerformed
         new MenuView().setVisible(true);
-        c.quizno=quizno;
         this.setVisible(false);
     }//GEN-LAST:event_OpenButtonActionPerformed
 
