@@ -179,9 +179,19 @@ public class QuizSelectionView extends javax.swing.JFrame {
 
         OpenButton.setText("OPEN");
         OpenButton.setEnabled(false);
+        OpenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpenButtonActionPerformed(evt);
+            }
+        });
 
         DeleteButton.setText("DELETE");
         DeleteButton.setEnabled(false);
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButtonActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Back To Home");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -338,6 +348,16 @@ public class QuizSelectionView extends javax.swing.JFrame {
         Check_Status(Quiz10.getText());
         quizno=9;
     }//GEN-LAST:event_Quiz10MouseClicked
+
+    private void OpenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenButtonActionPerformed
+        new MenuView().setVisible(true);
+        c.quizno=quizno;
+        this.setVisible(false);
+    }//GEN-LAST:event_OpenButtonActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        
+    }//GEN-LAST:event_DeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
