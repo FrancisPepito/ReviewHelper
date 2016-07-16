@@ -25,7 +25,7 @@ public class Controll {
     JSONParser parser = new JSONParser();
     public Object open_file(){
         try {
-            Object obj = parser.parse(new FileReader("/home/johnhill1202/Desktop/quiz.json"));
+            Object obj = parser.parse(new FileReader("/home/johnhill1202/NetBeansProjects/ReviewHelper/quiz.json"));
             return obj;
         } catch (IOException ex) {
             Logger.getLogger(Controll.class.getName()).log(Level.SEVERE, null, ex);

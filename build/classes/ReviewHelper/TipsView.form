@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jScrollPane1" alignment="0" pref="500" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jScrollPane1" alignment="0" pref="400" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Memorization Techniques&#xa;&#xa;1. Peg System - This technique is useful when memorizing a list in a particular order. This method requires you to associate words that rhymes to a number.&#xa;     Example:&#xa;       1 - Gun /  Sun&#xa;       2 - Zoo / Glue&#xa;       3 - Tree / Bee&#xa;       4 - More / Boar&#xa;       5 - Hive / Live&#xa;       and so on. . .&#xa;&#xa;These word will be used to associate to the list that you want to memorize. For example, your teacher wants you to memorize the five stages of grief.(Denial, Anger, Bargaining, Deppresion and Acceptance)&#xa;&#xa;1. The man still denies(Denial) that the GUN that was found in his bas was his&#xa;2. The visitors in the ZOO is angry because of the unexpected closing of it&#xa;3. A man was bargaining if he could buy the TREE&#xa;4. The BOAR was deppresed because he didn&apos;t caught the fish&#xa;5. He lively accepted the gift&#xa;&#xa;2. Link Method - This memorization technique involves creating associations between items in a list and assigning images to each connection. For instance your professor wants you to remember which items fall under the section of current assests in a balance sheet (Cash, Inventories, Accounts Recievables, Prepaid Expense).&#xa;&#xa;You can associate the item as below&#xa;1. If I dont have cash, I can&apos;t buy inventory&#xa;2. To buy inventory, I shall collect my accounts recievable that my friends owe me&#xa;3. "/>
+            <Property name="focusable" type="boolean" value="false"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
