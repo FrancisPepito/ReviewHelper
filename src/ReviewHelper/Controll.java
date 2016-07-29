@@ -25,7 +25,7 @@ public class Controll {
     JSONParser parser = new JSONParser();
     public Object open_file(){
         try {
-            Object obj = parser.parse(new FileReader("/home/johnhill1202/NetBeansProjects/ReviewHelper/quiz.json"));
+            Object obj = parser.parse(new FileReader("quiz.json"));
             return obj;
         } catch (IOException ex) {
             Logger.getLogger(Controll.class.getName()).log(Level.SEVERE, null, ex);
@@ -36,7 +36,7 @@ public class Controll {
     }
     public void write_file(String jsonObject){
         try{
-            File file = new File("/home/johnhill1202/NetBeansProjects/ReviewHelper/quiz.json");
+            File file = new File("quiz.json");
             file.createNewFile();
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(jsonObject);
@@ -85,5 +85,18 @@ public class Controll {
         JSONObject term = (JSONObject) terms.get(b);
         String definition = (String) term.get("Question");
         return definition;        
+    }
+    public void delete_quiz(int a){
+        Object obj=open_file();
+        JSONObject jsonObject=(JSONObject) obj;
+        JSONArray quizzes = (JSONArray) jsonObject.get("Quizzes");
+        JSONObject quiz = (JSONObject) quizzes.get(a);
+        JSONArray terms = (JSONArray) quiz.get("Term");
+        while(!terms.isEmpty()){
+            terms.remove(0);
+        }
+        quiz.replace("Title", "EMPTY   ");
+        
+        write_file(jsonObject.toJSONString());
     }
 }

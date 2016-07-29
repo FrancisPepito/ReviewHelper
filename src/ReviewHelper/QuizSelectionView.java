@@ -355,7 +355,9 @@ public class QuizSelectionView extends javax.swing.JFrame {
     }//GEN-LAST:event_OpenButtonActionPerformed
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
-        
+        c.delete_quiz(quizno);
+        Set_Title();
+        System.out.print("Hello");
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
     /**
