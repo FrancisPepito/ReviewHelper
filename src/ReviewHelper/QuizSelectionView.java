@@ -294,8 +294,9 @@ public class QuizSelectionView extends javax.swing.JFrame {
     }//GEN-LAST:event_Quiz1MouseClicked
 
     private void NewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewButtonActionPerformed
-        Quiz1.setText(JOptionPane.showInputDialog("Enter name"));
-        
+        String a = JOptionPane.showInputDialog("Enter name of quiz");
+        c.add_quiz(quizno,a);
+        Set_Title();
     }//GEN-LAST:event_NewButtonActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

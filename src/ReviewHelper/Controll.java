@@ -86,6 +86,15 @@ public class Controll {
         String definition = (String) term.get("Question");
         return definition;        
     }
+    public void add_quiz(int a, String name){
+        Object obj=open_file();
+        JSONObject jsonObject=(JSONObject) obj;
+        JSONArray quizzes = (JSONArray) jsonObject.get("Quizzes");
+        JSONObject quiz = (JSONObject) quizzes.get(a);
+        JSONArray terms = (JSONArray) quiz.get("Term");
+        quiz.replace("Title",name);
+        write_file(jsonObject.toJSONString());
+    }
     public void delete_quiz(int a){
         Object obj=open_file();
         JSONObject jsonObject=(JSONObject) obj;
