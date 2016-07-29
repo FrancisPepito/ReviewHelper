@@ -58,7 +58,7 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Back to menu");
+        jButton4.setText("Back to main menu");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -78,7 +78,7 @@ public class MenuView extends javax.swing.JFrame {
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
+                        .addGap(177, 177, 177)
                         .addComponent(jButton4)))
                 .addContainerGap(160, Short.MAX_VALUE))
         );

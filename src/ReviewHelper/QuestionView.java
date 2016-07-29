@@ -38,6 +38,7 @@ public class QuestionView extends javax.swing.JFrame {
         NextButton = new javax.swing.JButton();
         EditButton = new javax.swing.JButton();
         RemoveButton = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -67,15 +68,37 @@ public class QuestionView extends javax.swing.JFrame {
         });
 
         PrevButton.setText("Prev");
+        PrevButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrevButtonActionPerformed(evt);
+            }
+        });
 
         NextButton.setText("Next");
+        NextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextButtonActionPerformed(evt);
+            }
+        });
 
         EditButton.setText("Edit");
+        EditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditButtonActionPerformed(evt);
+            }
+        });
 
         RemoveButton.setText("Remove");
         RemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RemoveButtonActionPerformed(evt);
+            }
+        });
+
+        BackButton.setText("Back to Menu");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
             }
         });
 
@@ -95,7 +118,8 @@ public class QuestionView extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(BackButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -117,8 +141,8 @@ public class QuestionView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TermTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddButton)
                     .addComponent(RemoveButton))
@@ -126,8 +150,9 @@ public class QuestionView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PrevButton)
                     .addComponent(NextButton)
-                    .addComponent(EditButton))
-                .addGap(45, 45, 45))
+                    .addComponent(EditButton)
+                    .addComponent(BackButton))
+                .addContainerGap())
         );
 
         pack();
@@ -167,16 +192,75 @@ public class QuestionView extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        c.add_term(TermTextBox.getText(),DefTextField.getText());
+        c.add_term(TermTextBox.getText(),DefTextField.getText(),QuizSelectionView.quizno);
         TermTextBox.setText("");
         DefTextField.setText("");
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void RemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveButtonActionPerformed
-        c.remove_term(index);
-        TermTextBox.setText("");
-        DefTextField.setText("");
+        try{
+            c.remove_term(QuizSelectionView.quizno,index);
+            try{
+                TermTextBox.setText(c.show_answer(QuizSelectionView.quizno, index));
+                DefTextField.setText(c.show_definition(QuizSelectionView.quizno,index));
+            }catch(Exception ex){
+                try{
+                    index-=1;
+                    TermTextBox.setText(c.show_answer(QuizSelectionView.quizno, index));
+                    DefTextField.setText(c.show_definition(QuizSelectionView.quizno,index));
+                }catch(Exception e){
+                    TermTextBox.setText("");
+                    DefTextField.setText("");
+                }
+            }
+        }catch(Exception ex){
+            
+        }
     }//GEN-LAST:event_RemoveButtonActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        new MenuView().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void PrevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevButtonActionPerformed
+        index-=1;
+        try{
+            TermTextBox.setText(c.show_answer(QuizSelectionView.quizno, index));
+            DefTextField.setText(c.show_definition(QuizSelectionView.quizno,index));
+        }catch(Exception ex){
+            index+=1;
+        }
+    }//GEN-LAST:event_PrevButtonActionPerformed
+
+    private void NextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextButtonActionPerformed
+        index+=1;
+        try{
+            TermTextBox.setText(c.show_answer(QuizSelectionView.quizno, index));
+            DefTextField.setText(c.show_definition(QuizSelectionView.quizno,index));
+        }catch(Exception ex){
+            index-=1;
+        }
+    }//GEN-LAST:event_NextButtonActionPerformed
+
+    private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
+        if(EditButton.getText().equals("Edit")){
+            EditButton.setText("Save");
+            RemoveButton.setEnabled(false);
+            PrevButton.setEnabled(false);
+            NextButton.setEnabled(false);
+            TermTextBox.setFocusable(true);
+            DefTextField.setFocusable(true);
+        }else{
+            EditButton.setText("Edit");
+            RemoveButton.setEnabled(true);
+            PrevButton.setEnabled(true);
+            NextButton.setEnabled(true);
+            TermTextBox.setFocusable(false);
+            DefTextField.setFocusable(false);
+            c.edit_term(QuizSelectionView.quizno, index, TermTextBox.getText(), DefTextField.getText());
+        }
+    }//GEN-LAST:event_EditButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,6 +299,7 @@ public class QuestionView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
+    private javax.swing.JButton BackButton;
     private javax.swing.JTextArea DefTextField;
     private javax.swing.JButton EditButton;
     private javax.swing.JButton NextButton;

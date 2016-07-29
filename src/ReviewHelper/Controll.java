@@ -54,11 +54,11 @@ public class Controll {
         String title = (String) quiz.get("Title");
         return title;
    }
-    public void add_term(String a, String b){
+    public void add_term(String a, String b, int c){
         Object obj=open_file();
         JSONObject jsonObject= (JSONObject) obj;
         JSONArray quizzes = (JSONArray) jsonObject.get("Quizzes");
-        JSONObject quiz = (JSONObject) quizzes.get(quizno);
+        JSONObject quiz = (JSONObject) quizzes.get(c);
         JSONArray term = (JSONArray) quiz.get("Term");
         JSONObject jsonobj = new JSONObject();
         jsonobj.put("Answer",a);
@@ -66,13 +66,24 @@ public class Controll {
         term.add(jsonobj);
         write_file(jsonObject.toJSONString());
     }
-    public void remove_term(int a){
+    public void remove_term(int a, int b){
         Object obj=open_file();
         JSONObject jsonObject=(JSONObject) obj;
         JSONArray quizzes=(JSONArray) jsonObject.get("Quizzes");
-        JSONObject quiz=(JSONObject) quizzes.get(quizno);
+        JSONObject quiz=(JSONObject) quizzes.get(a);
         JSONArray term=(JSONArray) quiz.get("Term");
-        term.remove(a);
+        term.remove(b);
+        write_file(jsonObject.toJSONString());
+    }
+    public void edit_term(int a, int b, String ans, String def){
+        Object obj=open_file();
+        JSONObject jsonObject=(JSONObject) obj;
+        JSONArray quizzes=(JSONArray) jsonObject.get("Quizzes");
+        JSONObject quiz=(JSONObject) quizzes.get(a);
+        JSONArray term=(JSONArray) quiz.get("Term");
+        JSONObject answer=(JSONObject) term.get(b);
+        answer.put("Answer", ans);
+        answer.put("Question",def);
         write_file(jsonObject.toJSONString());
     }
     public String show_answer(int a,int b){
