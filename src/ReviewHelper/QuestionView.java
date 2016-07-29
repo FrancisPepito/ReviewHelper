@@ -1,5 +1,5 @@
 package ReviewHelper;
-
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -34,10 +34,10 @@ public class QuestionView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         AddButton = new javax.swing.JButton();
-        PicButton = new javax.swing.JButton();
         PrevButton = new javax.swing.JButton();
         NextButton = new javax.swing.JButton();
         EditButton = new javax.swing.JButton();
+        RemoveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -59,21 +59,25 @@ public class QuestionView extends javax.swing.JFrame {
 
         jLabel2.setText("Definition");
 
-        AddButton.setText("Add Term");
+        AddButton.setText("Add");
         AddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddButtonActionPerformed(evt);
             }
         });
 
-        PicButton.setText("Associate");
-        PicButton.setEnabled(false);
-
         PrevButton.setText("Prev");
 
         NextButton.setText("Next");
 
         EditButton.setText("Edit");
+
+        RemoveButton.setText("Remove");
+        RemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,19 +95,16 @@ public class QuestionView extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(PicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PrevButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(NextButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(PrevButton, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(RemoveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,26 +118,23 @@ public class QuestionView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TermTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                        .addComponent(AddButton)
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PrevButton)
-                            .addComponent(NextButton)
-                            .addComponent(EditButton))
-                        .addGap(45, 45, 45))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(PicButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddButton)
+                    .addComponent(RemoveButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PrevButton)
+                    .addComponent(NextButton)
+                    .addComponent(EditButton))
+                .addGap(45, 45, 45))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     Controll c = new Controll();
     static int mode;
+    int index=0;
     public static void set_mode(int i){
         mode=i;
     }
@@ -145,14 +143,21 @@ public class QuestionView extends javax.swing.JFrame {
             EditButton.setEnabled(false);
             PrevButton.setEnabled(false);
             NextButton.setEnabled(false);
+            RemoveButton.setEnabled(false);
         }
         else{
             AddButton.setEnabled(false);
             TermTextBox.setFocusable(false);
             DefTextField.setFocusable(false);
-            TermTextBox.setText(c.show_answer(QuizSelectionView.quizno,0));
-            DefTextField.setText(c.show_definition(QuizSelectionView.quizno, 0));
-
+            try{
+                TermTextBox.setText(c.show_answer(QuizSelectionView.quizno,index));
+                DefTextField.setText(c.show_definition(QuizSelectionView.quizno, index));
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null,"No terms to display");
+                new MenuView().setVisible(true);
+                this.setVisible(false);
+            }
+            
         }
         
     }//GEN-LAST:event_formWindowActivated
@@ -166,6 +171,12 @@ public class QuestionView extends javax.swing.JFrame {
         TermTextBox.setText("");
         DefTextField.setText("");
     }//GEN-LAST:event_AddButtonActionPerformed
+
+    private void RemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveButtonActionPerformed
+        c.remove_term(index);
+        TermTextBox.setText("");
+        DefTextField.setText("");
+    }//GEN-LAST:event_RemoveButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,8 +218,8 @@ public class QuestionView extends javax.swing.JFrame {
     private javax.swing.JTextArea DefTextField;
     private javax.swing.JButton EditButton;
     private javax.swing.JButton NextButton;
-    private javax.swing.JButton PicButton;
     private javax.swing.JButton PrevButton;
+    private javax.swing.JButton RemoveButton;
     private javax.swing.JTextField TermTextBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

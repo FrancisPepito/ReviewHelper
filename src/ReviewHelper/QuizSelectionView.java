@@ -98,6 +98,7 @@ public class QuizSelectionView extends javax.swing.JFrame {
         });
 
         Quiz2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        Quiz2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Quiz2.setText("EMPTY   ");
         Quiz2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,7 +115,9 @@ public class QuizSelectionView extends javax.swing.JFrame {
         });
 
         Quiz4.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        Quiz4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Quiz4.setText("EMPTY   ");
+        Quiz4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         Quiz4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Quiz4MouseClicked(evt);
@@ -130,6 +133,7 @@ public class QuizSelectionView extends javax.swing.JFrame {
         });
 
         Quiz6.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        Quiz6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Quiz6.setText("EMPTY   ");
         Quiz6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -146,6 +150,7 @@ public class QuizSelectionView extends javax.swing.JFrame {
         });
 
         Quiz8.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        Quiz8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Quiz8.setText("EMPTY   ");
         Quiz8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -162,6 +167,7 @@ public class QuizSelectionView extends javax.swing.JFrame {
         });
 
         Quiz10.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        Quiz10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Quiz10.setText("EMPTY   ");
         Quiz10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -205,42 +211,32 @@ public class QuizSelectionView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Quiz9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Quiz10))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Quiz7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Quiz8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Quiz1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Quiz2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Quiz3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Quiz4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Quiz5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Quiz6)))
-                .addGap(71, 71, 71))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(OpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(102, 102, 102)
-                        .addComponent(jButton4)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                        .addComponent(jButton4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(NewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(OpenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Quiz5)
+                            .addComponent(Quiz3)
+                            .addComponent(Quiz1)
+                            .addComponent(Quiz9)
+                            .addComponent(Quiz7))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Quiz10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Quiz8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Quiz2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Quiz6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Quiz4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,52 +299,26 @@ public class QuizSelectionView extends javax.swing.JFrame {
         Set_Title();
     }//GEN-LAST:event_formWindowOpened
 
-    private void Quiz2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz2MouseClicked
-        Check_Status(Quiz2.getText());
-        quizno=1;
-
-    }//GEN-LAST:event_Quiz2MouseClicked
-
     private void Quiz3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz3MouseClicked
         Check_Status(Quiz3.getText());
         quizno=2;
 
     }//GEN-LAST:event_Quiz3MouseClicked
 
-    private void Quiz4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz4MouseClicked
-        Check_Status(Quiz4.getText());
-        quizno=3;
-    }//GEN-LAST:event_Quiz4MouseClicked
-
     private void Quiz5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz5MouseClicked
         Check_Status(Quiz5.getText());
         quizno=4;
     }//GEN-LAST:event_Quiz5MouseClicked
-
-    private void Quiz6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz6MouseClicked
-        Check_Status(Quiz6.getText());
-        quizno=5;
-    }//GEN-LAST:event_Quiz6MouseClicked
 
     private void Quiz7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz7MouseClicked
         Check_Status(Quiz7.getText());
         quizno=6;
     }//GEN-LAST:event_Quiz7MouseClicked
 
-    private void Quiz8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz8MouseClicked
-        Check_Status(Quiz8.getText());
-        quizno=7;
-    }//GEN-LAST:event_Quiz8MouseClicked
-
     private void Quiz9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz9MouseClicked
         Check_Status(Quiz9.getText());
         quizno=8;
     }//GEN-LAST:event_Quiz9MouseClicked
-
-    private void Quiz10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz10MouseClicked
-        Check_Status(Quiz10.getText());
-        quizno=9;
-    }//GEN-LAST:event_Quiz10MouseClicked
 
     private void OpenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenButtonActionPerformed
         new MenuView().setVisible(true);
@@ -356,10 +326,38 @@ public class QuizSelectionView extends javax.swing.JFrame {
     }//GEN-LAST:event_OpenButtonActionPerformed
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
-        c.delete_quiz(quizno);
-        Set_Title();
-        System.out.print("Hello");
+        if(JOptionPane.showInputDialog("Type 'DELETE' to confirm deletion").equals("DELETE")){
+            c.delete_quiz(quizno);
+            Set_Title();
+        }else{
+            JOptionPane.showMessageDialog(null,"Quiz not deleted");
+        }
     }//GEN-LAST:event_DeleteButtonActionPerformed
+
+    private void Quiz10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz10MouseClicked
+        Check_Status(Quiz10.getText());
+        quizno=9;
+    }//GEN-LAST:event_Quiz10MouseClicked
+
+    private void Quiz8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz8MouseClicked
+        Check_Status(Quiz8.getText());
+        quizno=7;
+    }//GEN-LAST:event_Quiz8MouseClicked
+
+    private void Quiz6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz6MouseClicked
+        Check_Status(Quiz6.getText());
+        quizno=5;
+    }//GEN-LAST:event_Quiz6MouseClicked
+
+    private void Quiz4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz4MouseClicked
+        Check_Status(Quiz4.getText());
+        quizno=3;
+    }//GEN-LAST:event_Quiz4MouseClicked
+
+    private void Quiz2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Quiz2MouseClicked
+        Check_Status(Quiz2.getText());
+        quizno=1;
+    }//GEN-LAST:event_Quiz2MouseClicked
 
     /**
      * @param args the command line arguments

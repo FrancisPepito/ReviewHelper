@@ -66,6 +66,15 @@ public class Controll {
         term.add(jsonobj);
         write_file(jsonObject.toJSONString());
     }
+    public void remove_term(int a){
+        Object obj=open_file();
+        JSONObject jsonObject=(JSONObject) obj;
+        JSONArray quizzes=(JSONArray) jsonObject.get("Quizzes");
+        JSONObject quiz=(JSONObject) quizzes.get(quizno);
+        JSONArray term=(JSONArray) quiz.get("Term");
+        term.remove(a);
+        write_file(jsonObject.toJSONString());
+    }
     public String show_answer(int a,int b){
         Object obj=open_file();
         JSONObject jsonObject = (JSONObject) obj;
